@@ -1,15 +1,17 @@
 package br.edu.ifsp.orderflow.domain;
 
+import java.util.UUID;
+
 public class Cliente {
 
     private final String nome;
     private final String email;
     private final String id;
 
-    public Cliente(String nome, String email, String id) {
+    public Cliente(String nome, String email) {
         this.nome = nome;
         this.email = email;
-        this.id = id;
+        this.id = (UUID.randomUUID().toString());
     }
 
     public String getNome() {

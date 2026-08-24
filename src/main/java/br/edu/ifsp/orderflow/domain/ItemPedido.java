@@ -1,5 +1,7 @@
 package br.edu.ifsp.orderflow.domain;
 
+import java.math.BigDecimal;
+
 public class ItemPedido {
 
     private final Produto produto;
@@ -8,6 +10,10 @@ public class ItemPedido {
     public ItemPedido(Produto produto, int quantidade) {
         this.produto= produto;
         this.quantidade= quantidade;
+    }
+
+    public BigDecimal calcularSubtotal() {
+        return this.produto.getPreco().multiply(BigDecimal.valueOf(this.quantidade));
     }
 
     public Produto getProduto() {
