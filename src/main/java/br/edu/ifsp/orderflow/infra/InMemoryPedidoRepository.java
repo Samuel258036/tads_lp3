@@ -17,18 +17,18 @@ public class InMemoryPedidoRepository implements IPedidoRepository {
     @Override
     public Optional<Pedido> findById(String id) {
 
-        if (this.pedidos.containsKey(id) == false){
+        if (this.pedidos.containsKey(id) == false) {
             return Optional.empty();
         }
 
         Pedido pedido = this.pedidos.get(id);
-
-        return Optional.empty();
+        return Optional.of(pedido);
     }
 
     @Override
     public List<Pedido> findAll() {
-        List<Pedido>todos = new ArrayList<>();
+
+        List<Pedido> todos = new ArrayList<>();
 
         for (Pedido item : this.pedidos.values()) {
             todos.add(item);

@@ -7,11 +7,10 @@ import java.util.Optional;
 
 public interface IPedidoRepository {
 
-    void save (Pedido pedido);
+    void save(Pedido pedido);
 
     Optional<Pedido> findById(String id);
 
     List<Pedido> findAll();
-
 
 }

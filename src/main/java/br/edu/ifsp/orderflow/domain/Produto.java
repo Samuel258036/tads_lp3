@@ -14,12 +14,12 @@ public class Produto {
         this.preco = preco;
     }
 
-    public String getNome() {
-        return this.nome;
-    }
-
     public String getId() {
         return this.id;
+    }
+
+    public String getNome() {
+        return this.nome;
     }
 
     public BigDecimal getPreco() {
