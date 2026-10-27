@@ -23,6 +23,6 @@ public class Metricas {
 
     public String resumo() {
         return "Métricas: "+ this.qtdAprovado + " aprovado(s), "
-                + this.qtdReprovado + "recusado(s)";
+                + this.qtdReprovado + " recusado(s)";
     }
 }

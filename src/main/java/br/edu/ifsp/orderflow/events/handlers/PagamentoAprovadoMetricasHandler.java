@@ -7,7 +7,7 @@ public class PagamentoAprovadoMetricasHandler implements IEventHandler<Pagamento
 
     private final Metricas metricas;
 
-    PagamentoAprovadoMetricasHandler(Metricas metricas) {
+    public PagamentoAprovadoMetricasHandler(Metricas metricas) {
         this.metricas = metricas;
     }
 

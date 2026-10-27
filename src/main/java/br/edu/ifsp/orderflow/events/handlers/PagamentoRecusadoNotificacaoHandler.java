@@ -27,7 +27,7 @@ public class PagamentoRecusadoNotificacaoHandler implements IEventHandler<Pagame
         if (pedidoEncontrado.isPresent()) {
             Pedido pedido = pedidoEncontrado.get();
 
-            this.notificacaoService.notificar(pedido.getCliente(), "Pedido recusado (" + event.motivo() + "). Pedido" + pedido.getIdCurto() + " cancelado.");
+            this.notificacaoService.notificar(pedido.getCliente(), "Pedido recusado (" + event.transacaoId() + "). Pedido" + pedido.getIdCurto() + " cancelado.");
         }
     }
 

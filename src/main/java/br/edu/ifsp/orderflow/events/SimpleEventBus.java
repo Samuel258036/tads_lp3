@@ -18,7 +18,7 @@ public class SimpleEventBus implements IEventBus {
             this.handlers.put(handler.eventType(), listHandlers);
         }
 
-        handlers.computeIfAbsent(handler.eventType(), eventType -> new ArrayList<>()).add(handler);
+        listHandlers.add(handler);
     }
 
     @Override
@@ -35,9 +35,6 @@ public class SimpleEventBus implements IEventBus {
             handler.handle(event);
         }
 
-        for (IEventHandler<?> handler : handlers.getOrDefault(event.getClass(), List.of())) {
-            dispatch(handler, event);
-        }
     }
 
     private <E extends IDomainEvent> void dispatch(IEventHandler<E> handler, IDomainEvent event) {

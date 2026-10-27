@@ -12,6 +12,6 @@ public class PedidoCriadoLogHandler implements IEventHandler<PedidoCriado> {
 
     @Override
     public Class<PedidoCriado> eventType() {
-        return null;
+        return PedidoCriado.class;
     }
 }
