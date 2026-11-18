@@ -4,6 +4,7 @@ import br.edu.ifsp.orderflow.events.IEventHandler;
 import br.edu.ifsp.orderflow.events.PagamentoRecusado;
 
 public class PagamentoRecusadoMetricasHandler implements IEventHandler<PagamentoRecusado> {
+
     private final Metricas metricas;
 
     public PagamentoRecusadoMetricasHandler(Metricas metricas) {
@@ -13,7 +14,6 @@ public class PagamentoRecusadoMetricasHandler implements IEventHandler<Pagamento
     @Override
     public void handle(PagamentoRecusado event) {
         this.metricas.incrementarQtdReprovado();
-
     }
 
     @Override

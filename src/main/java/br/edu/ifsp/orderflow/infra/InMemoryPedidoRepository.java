@@ -22,6 +22,7 @@ public class InMemoryPedidoRepository implements IPedidoRepository {
         }
 
         Pedido pedido = this.pedidos.get(id);
+
         return Optional.of(pedido);
     }
 

@@ -12,5 +12,4 @@ public interface IPedidoRepository {
     Optional<Pedido> findById(String id);
 
     List<Pedido> findAll();
-
 }

@@ -2,8 +2,6 @@ package br.edu.ifsp.orderflow.events.handlers;
 
 import br.edu.ifsp.orderflow.domain.Pedido;
 import br.edu.ifsp.orderflow.events.IEventHandler;
-import br.edu.ifsp.orderflow.events.PagamentoAprovado;
-import br.edu.ifsp.orderflow.events.PagamentoRecusado;
 import br.edu.ifsp.orderflow.events.PedidoCancelado;
 import br.edu.ifsp.orderflow.service.INotificacaoService;
 import br.edu.ifsp.orderflow.service.IPedidoRepository;
@@ -15,7 +13,10 @@ public class PedidoCanceladoNotificacaoHandler implements IEventHandler<PedidoCa
     private final IPedidoRepository pedidoRepository;
     private final INotificacaoService notificacaoService;
 
-    public PedidoCanceladoNotificacaoHandler(IPedidoRepository pedidoRepository, INotificacaoService notificacaoService) {
+    public PedidoCanceladoNotificacaoHandler(
+        IPedidoRepository pedidoRepository,
+        INotificacaoService notificacaoService
+    ) {
         this.notificacaoService = notificacaoService;
         this.pedidoRepository = pedidoRepository;
     }
@@ -26,14 +27,18 @@ public class PedidoCanceladoNotificacaoHandler implements IEventHandler<PedidoCa
         Optional<Pedido> pedidoEncontrado = this.pedidoRepository.findById(event.pedidoId());
 
         if (pedidoEncontrado.isPresent()) {
+
             Pedido pedido = pedidoEncontrado.get();
 
-            this.notificacaoService.notificar(pedido.getCliente(), "Pedido " + pedido.getIdCurto() + " cancelado." + event.motivo());
+            this.notificacaoService.notificar(
+                pedido.getCliente(),
+                "Pedido " + pedido.getIdCurto() + " cancelado: " + event.motivo()
+            );
         }
     }
 
     @Override
     public Class<PedidoCancelado> eventType() {
-        return null;
+        return PedidoCancelado.class;
     }
 }

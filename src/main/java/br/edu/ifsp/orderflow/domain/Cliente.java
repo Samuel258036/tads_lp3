@@ -9,7 +9,7 @@ public class Cliente {
     private final String email;
 
     public Cliente(String nome, String email) {
-        this.id = (UUID.randomUUID().toString());
+        this.id = (UUID.randomUUID()).toString();
         this.nome = nome;
         this.email = email;
     }

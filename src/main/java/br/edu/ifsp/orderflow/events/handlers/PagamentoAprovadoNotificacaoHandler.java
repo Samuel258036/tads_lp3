@@ -9,27 +9,33 @@ import br.edu.ifsp.orderflow.service.IPedidoRepository;
 import java.util.Optional;
 
 public class PagamentoAprovadoNotificacaoHandler implements IEventHandler<PagamentoAprovado> {
+
     private final IPedidoRepository pedidoRepository;
     private final INotificacaoService notificacaoService;
 
-    public PagamentoAprovadoNotificacaoHandler(IPedidoRepository pedidoRepository, INotificacaoService notificacaoService) {
+    public PagamentoAprovadoNotificacaoHandler(
+        IPedidoRepository pedidoRepository,
+        INotificacaoService notificacaoService
+    ) {
         this.notificacaoService = notificacaoService;
         this.pedidoRepository = pedidoRepository;
     }
 
     @Override
     public void handle(PagamentoAprovado event) {
-        Optional<Pedido> pedidoEncontrado = pedidoRepository.findById(event.pedidoId());
 
-        if (pedidoEncontrado.isEmpty()) {
-            return;
-        }
+        Optional<Pedido> pedidoEncontrado = this.pedidoRepository.findById(event.pedidoId());
 
-        Pedido pedido = pedidoEncontrado.get();
-        notificacaoService.notificar(
+        if (pedidoEncontrado.isPresent()) {
+
+            Pedido pedido = pedidoEncontrado.get();
+
+            this.notificacaoService.notificar(
                 pedido.getCliente(),
-                "Pagamento aprovado! " + pedido.getIdCurto() + " confirmado"
-        );
+                "Pagamento aprovado! Pedido " + pedido.getIdCurto()
+                    + " confirmado (transação " + event.transacaoId() + ")"
+            );
+        }
     }
 
     @Override

@@ -20,9 +20,9 @@ public class Metricas {
     public int getQtdReprovado() {
         return qtdReprovado;
     }
-
+    
     public String resumo() {
-        return "Métricas: "+ this.qtdAprovado + " aprovado(s), "
+        return "Métricas: "+ this.qtdAprovado + " aprovado(s), " 
                 + this.qtdReprovado + " recusado(s)";
     }
 }

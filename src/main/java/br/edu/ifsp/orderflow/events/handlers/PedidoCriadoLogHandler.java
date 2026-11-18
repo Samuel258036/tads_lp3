@@ -7,7 +7,10 @@ public class PedidoCriadoLogHandler implements IEventHandler<PedidoCriado> {
 
     @Override
     public void handle(PedidoCriado event) {
-        System.out.println("[log] novo pedido " + event.pedidoId() + " em " + event.ocorridoEm());
+
+        System.out.println(
+            "[Log] novo pedido " + event.pedidoId() + " em " + event.ocorridoEm()
+        );
     }
 
     @Override
